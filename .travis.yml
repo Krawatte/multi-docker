@@ -20,3 +20,13 @@ after_success:
     - docker push cboigenreif/multi-nginx
     - docker push cboigenreif/multi-server
     - docker push cboigenreif/multi-worker
+    
+deploy:
+    provider: elasticbeanstalk
+    region: eu-central-1
+    app: multi-docker
+    env: MultiDocker-env
+    bucket_name: elasticbeanstalk-eu-central-1-398678187888
+    bucket_path: docker-multi
+    on:
+        branch: master
